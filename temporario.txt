@@ -1,0 +1,1444 @@
+%%
+%integer
+//%class Scanner
+%%
+^[a-zA-Z][a-zA-Z0-9]*$ { System.out.printf("Token Encontrado |%s|\n", yytext()); return 1; }
+^(ate)|(caractere)|(de)|(div)|(e)|(enquanto)|(entao)|(escreva)|(escolha)|(faca)|(fim)|(fimenquanto)|(fimescolha)|(fimpara)|(fimregistro)|(fimse)|(inicio)|(inteiro)|(leia)|(mod)|(modulo)|(nao)|(ou)|(para)|(passo)|(programa)|(real)|(registro)|(repita)|(se)|(senao)|(tipo)|(vetor)|(retorne)+$ { System.out.printf("Token Encontrado |%s|\n", yytext()); return 2; }
+^(:)|(;)|(\/)|(\*)|(\+)|(>)|(<)|(>=)|(<=)|(=)|(<>)|(\()|(\))|(“)|(\\)|(\{)|(\})|(\[)|(\])|(..)|(,)|(-)|(<-)+$ { System.out.printf("Token Encontrado |%s|\n", yytext()); return 3; }
+^[0-9]+[\.][0-9]+$ { System.out.printf("Token Encontrado |%s|\n", yytext()); return 5; }
+^[0-9]+$ { System.out.printf("Token Encontrado |%s|\n", yytext()); return 5; }
+^(verdadeiro)|(falso)$ { System.out.printf("Token Encontrado |%s|\n", yytext()); return 5; }
+^(\/\*)(([a-zA-Z0-9\-_\,\* \\\’\”\/\*\%\?\\7\\a\\b\\n\\r\\t\\v\(\)\$#@&=!\;:><|ºª§ç¹²³£¢¬áéíóúàèìòùÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛâêîôûãÃõÕ\{\}\]\[¨\.]+)+)[^\*\\](\*\\)$ { System.out.printf("Token Encontrado |%s|\n", yytext()); return 7; }
+
+[ \t\n\r]+ { /* do nothing */ }
+.+ { System.err.printf("error: unexpected char |%s|\n", yytext()); }
+//vetor matrez e modulo
+var:
+tipo T = vetor [1..20] de real; {definição do tipo do vetor}
+tipo T1 = matriz [1..10,1..20] de real; {definição do tipo do vetor}
+tipo Pessoa = registro
+	T1:Kn;
+	inteiro:n;
+	logico:m;
+fimregistro;
+tipo TURMA = vetor [1..20] de Pessoa; {definição do tipo do vetor}
+inteiro:op;
+modulo Calcular (Pessoa: ativo[,10,op],inteiro:m) 
+          se(ativo[1,1,2].m=verdadeiro)entao
+               retorne 2500;
+          senao
+               retorne 0;
+          fimse;
+     fimmodulo;
+inicio
+Pessoa:p;
+T1:s1;
+TURMA:s;
+T:n;
+real:soma;
+inteiro:i;
+soma <- i+p.n+n[1]+s1[1,2]+s[1].Kn;
+Calcular(s,p.n);
+escreva(i);
+leia(i);
+escreva(n[i]);
+leia(n[i]);
+escreva(n[1]);
+leia(n[1]);
+escreva(p.n[i]);
+leia(p.n[i]);
+escreva(p.n[1]);
+leia(p.n[1]);
+escreva(s1[i,i,i]);
+leia(s1[i,i,i]);
+escreva(s1[1,2,2]);
+leia(s1[1,2,2]);
+escreva(p.n[i,i,i]);
+leia(p.n[i,i,i]);
+escreva(p.n[1,2,2]);
+leia(p.n[1,2,2]);
+fimalgoritmo
+
+//modulo vetor matriz
+var:
+tipo T = vetor [1..20] de real; {definição do tipo do vetor}
+tipo T1 = matriz [1..10,1..20] de real; {definição do tipo do vetor}
+tipo Pessoa = registro
+	T:n;
+	T1:m;
+fimregistro;
+tipo TURMA = vetor [1..20] de Pessoa; {definição do tipo do vetor}
+inteiro:op;
+modulo Calcular (logico: ativo[5,10,op],inteiro:m) 
+          se(ativo=verdadeiro)entao
+               retorne 2500;
+          senao
+               retorne 0;
+          fimse;
+     fimmodulo;
+inicio
+Pessoa:p;
+TURMA:s;
+T:n;
+real:soma;
+inteiro:i;
+soma <- p.n+n[i];
+escreva(i);
+leia(i);
+escreva(n[i]);
+leia(n[i]);
+escreva(n[1]);
+leia(n[1]);
+escreva(p.n[i]);
+leia(p.n[i]);
+escreva(p.n[1]);
+leia(p.n[1]);
+fimalgoritmo
+
+//matriz e vetor
+inicio
+	tipo TURMA = vetor [1..20] de real; {definição do tipo do vetor}
+	TURMA: VTURMA,j;
+	tipo T = matriz [1..10,1..20,1..30] de inteiro; {definição do tipo do vetor}
+	T: VT,m;
+m[1,1,1]<-10;
+fimalgoritmo
+
+//matriz e vetor
+var:
+tipo T = vetor [1..20] de real; {definição do tipo do vetor}
+tipo Pessoa = registro
+	T:n;
+fimregistro;
+tipo TURMA = vetor [1..20] de Pessoa; {definição do tipo do vetor}
+inicio
+Pessoa:p;
+TURMA:s;
+T:n;
+inteiro:i;
+escreva(i);
+leia(i);
+escreva(n[i]);
+leia(n[i]);
+escreva(n[1]);
+leia(n[1]);
+escreva(p.n[i]);
+leia(p.n[i]);
+escreva(p.n[1]);
+leia(p.n[1]);
+fimalgoritmo
+
+//vetor registro
+var:
+tipo TURMA = vetor [1..20] de real; {definição do tipo do vetor}
+tipo Pessoa = registro
+	TURMA:n;
+fimregistro;
+inicio
+Pessoa:p;
+TURMA:n;
+inteiro:i;
+escreva(n[i]);
+leia(n[i]);
+escreva(n[1]);
+leia(n[1]);
+escreva(p.n[i]);
+leia(p.n[i]);
+escreva(p.n[1]);
+leia(p.n[1]);
+fimalgoritmo
+
+//matriz e vetor
+inicio
+	tipo TURMA = vetor [1..20] de real; {definição do tipo do vetor}
+	TURMA: VTURMA;
+	tipo T = matriz [1..20][1..20] de real; {definição do tipo do vetor}
+	T: VT;
+fimalgoritmo
+
+//erro impressao vetor
+var:
+tipo Pessoa = registro
+	inteiro:n[1..2];
+fimregistro;
+inicio
+Pessoa:p;
+inteiro:n[1..4],i;
+escreva(n[i]);
+leia(n[i]);
+escreva(n[1]);
+leia(n[1]);
+escreva(p.n[i]);
+leia(p.n[i]);
+escreva(p.n[1]);
+leia(p.n[1]);
+fimalgoritmo
+
+//Exemplo 1 vetor
+inicio
+inteiro:n[1..5],i,soma;
+para i de 0 ate 4 faca
+soma <- soma + n[i];
+fimpara;
+escreva("Soma: ",soma);
+fimalgoritmo
+
+//Exemplo 1 para
+var:
+tipo Pessoa = registro
+   caractere:nome[1..10];
+   real:nota;
+   inteiro:serie;
+fimregistro;
+inicio
+inteiro:i,J;
+Pessoa:p[1..10];
+para i de 0 ate 1 faca
+   escreva("informe o nome do" ,i," aluno: ");
+   leia(p[i].nome);
+   escreva("informe a serie: ");
+   leia(p[i].serie);
+   escreva("informe a nota do aluno: ");
+   leia(p[i].nota);
+   escreva("");
+fimpara;
+escreva("    Relatorio Escolar  ");
+para J de 0 ate 1 faca
+   escreva("--------------------");
+   escreva("NOME:"  ,p[J].nome);
+   escreva("SERIE:" ,p[J].serie,"º");
+   escreva("NOTA:" ,p[J].nota);
+fimpara;
+fimalgoritmo
+
+//Exemplo 1 registro
+inicio
+    tipo Pessoa = registro
+        inteiro: idade;
+        caractere:nome[1..10];
+    fimregistro;
+    Pessoa:pessoa;
+    escreva("Nome: ");
+    leia(pessoa.nome);
+    escreva("Idade: ");
+    leia(pessoa.idade);
+    escreva ("Nome: ",pessoa.nome);
+    escreva ("Idade: ",pessoa.idade);
+fimalgoritmo
+
+//Exemplo 1 modulo
+var:
+     tipo Pessoa = registro
+          inteiro: cpf;
+          real: salario;
+          caractere:nome[1..10];
+          logico:ativo;
+     fimregistro;
+     modulo Calcular (logico: ativo) 
+          se(ativo=verdadeiro)entao
+               retorne 2500;
+          senao
+               retorne 0;
+          fimse;
+     fimmodulo;
+inicio
+     Pessoa:pessoa;
+     escreva("Nome: ");
+     leia(pessoa.nome);
+     escreva("CPF: ");
+     leia(pessoa.cpf);
+     escreva("Pessoa ativa: ");
+     leia(pessoa.ativo);
+     pessoa.salario <- Calcular(pessoa.ativo);
+     escreva ("Salario:  ",pessoa.salario);
+fimalgoritmo
+
+//Exemplo 2 aritmetica
+inicio
+      inteiro:n,resMod;
+      escreva("Numero: ");
+      leia (n);
+      resMod <- mod(n,2);
+      se( resMod = 0) entao
+            escreva ("O valor é par!");
+      fimse;
+      se (resMod = 1) entao
+            escreva ("O valor é impar!");
+      fimse;
+fimalgoritmo
+
+//Exemplo 1 escolha
+inicio
+      inteiro: codigo;
+      escreva ("O CÓDIGO E CATEGORIA DE UM NADADOR ");
+      escreva ("Código------Categoria");
+      escreva ("  1001-------Infantil");
+      escreva ("  1002-------Juvenil");
+      escreva ("  1003-------Adolescente");
+      escreva ("  1004-------Sênior");
+      escreva ("  1005-------Profissional");
+      escreva ("  1006-------MASTER");
+      escreva ("Insira o código do nadador");
+      leia(codigo);
+      escolha codigo
+            caso 1001: escreva (" Sua categoria é Infantil");
+            caso 1002: escreva (" Sua categoria é Juvenil");
+            caso 1003: escreva (" Sua categoria é Adolescente");
+            caso 1004: escreva (" Sua categoria é Sênior");
+            caso 1005: escreva (" Sua categoria é Profissional");
+            caso 1006: escreva (" Sua categoria é Master");
+            caso contrario: escreva ("Codigo fora da faixa!");
+      fimescolha;
+fimalgoritmo
+
+//Exemplo 1 se..senao
+var:
+inteiro: idade;
+inicio
+      escreva("Informe a idade do nadador:");
+      leia(idade);
+
+se(idade < 5) entao
+            inicio
+            escreva("O atleta nao pode participar, idade abaixo da minima permitida.");
+            fim;
+fimse;
+se(idade >= 5 e idade <= 7) entao
+            escreva("O atleta tem " , idade, " anos,ele está na categoria INFANTIL A");
+fimse;
+se(idade > 7 e idade <= 10) entao
+            escreva("O atleta tem " , idade , " anos, ele está na categoria INFANTIL B");
+fimse;
+se(idade > 10 e idade <= 13) entao
+            escreva("O atleta tem " , idade , " anos, ele está na categoria JUVENIL A");
+fimse;
+se(idade > 13 e idade <= 17) entao
+            escreva("O atleta tem " , idade , " anos, ele está na categoria JUVENIL B");
+fimse;
+se(idade > 17) entao
+            escreva("O atleta tem " , idade, " anos, ele está na categoria SENIOR");
+fimse;
+fimalgoritmo
+
+//escreva tradução
+var:
+tipo Pessoa = registro
+			inteiro:matricula;
+			real:nota;
+			caractere:nome;
+			logico:passou;
+fimregistro;
+inteiro:matricula;
+real:nota;
+caractere:nome;
+logico:passou;
+inicio
+Pessoa:p;
+escreva("Nome: ", p.nome);
+escreva("nota: ",p.nota);
+escreva("matricula: ", p.matricula);
+escreva("Passou: ", p.passou);
+escreva("Aluno: ", p.nome, " Matricula: ", p.matricula, " Nota: ", p.nota, " Passou: ", p.passou);
+
+escreva("Nome: ", nome);
+escreva("nota: ",4.9);
+escreva("matricula: ",4);
+escreva("Passou: ",verdadeiro);
+escreva("Passou: ",falso);
+escreva("nota: ",nota);
+escreva("matricula: ",matricula);
+escreva("Passou: ",passou);
+escreva("Aluno: ",nome, " Matricula: ", matricula, " Nota: ", nota, " Passou: ", passou);
+fimalgoritmo
+
+//leia com registros
+	var:
+	tipo Pessoa = registro
+			inteiro: idade, cpf;
+			real: salario;
+			caractere:nome;
+			logico:vdd;
+	fimregistro;
+	inicio
+	Pessoa: p;
+	leia(p.idade);
+	leia(p.salario);
+	leia(p.vdd);
+	leia(p.nome);
+	leia(p.idade,p.cpf,p.salario,p.vdd,p.nome);
+	inteiro:i,k;
+	real:salario;
+	logico:vdd;
+	caractere:nome;
+	leia(i);
+	leia(salario);
+	leia(vdd);
+	leia(nome);
+	leia(i,k,salario,vdd,nome);
+	fimalgoritmo
+
+//atribuição numero negativo
+var:
+inteiro:m<-2;
+inteiro:n[1..7],k,y;
+logico:vd<-falso,v<-verdadeiro;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+modulo Calcular (inteiro: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<--idae;
+	retorne idae<-idae+op.idade;  
+fimmodulo; 
+inicio
+fimalgoritmo
+
+
+//validações
+var:
+inteiro:m<-2;
+inteiro:n[1..7],k,y;
+logico:vd<-falso,v<-verdadeiro;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+modulo Calcular (Pessoa:pessoa,caractere: nome, logico: log) 
+	Pessoa:op;
+	se(7.0>pessoa.salario)entao
+pessoa.cpf<-13;
+fimse;
+se(7.0>pessoa.salario)entao
+	inicio
+	pessoa.cpf<-13;
+	fim ;
+senao
+	inicio
+	pessoa.cpf<-13;
+	fim;
+fimse;
+se(7.0>pessoa.salario)entao
+	pessoa.cpf<-13;
+senao
+	pessoa.cpf<-13;
+fimse;
+	pessoa.salario<-12.9;
+	nome<-"Josias";
+	log<-verdadeiro;
+	op.idade-14.9;
+	op.cpf<-15;
+fimmodulo; 
+inicio
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13;
+escreva ("josias",n);
+fimalgoritmo
+
+//erros corrigidos no leia
+inicio
+inteiro:i,k;
+real:salario;
+logico:vdd;
+caractere:nome;
+leia(i);
+leia(salario);
+leia(vdd);
+leia(nome);
+leia(i,k,salario,vdd,nome);
+fimalgoritmo
+
+//erros Corrigidos no escreva
+inicio
+escreva(4.9);
+escreva(4);
+escreva(n);
+escreva("y",4.9);
+escreva("y");
+fimalgoritmo
+
+//erros de variáveis
+var:
+inteiro:m<-2;
+inteiro:n[1..7],k,y;
+logico:vd<-falso,v<-verdadeiro;
+inicio
+leia(n);
+escreva ("josias",kklll);
+fimalgoritmo
+
+//concluindo a tradução do módulo
+var:
+inteiro:m<-2;
+inteiro:n[1..7],k,y;
+logico:vd<-falso,v<-verdadeiro;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+modulo Calcular (inteiro: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<-15;
+fimmodulo; 
+inicio
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13;
+Calcular(pessoa.cpf,pessoa.vdd);
+Calcular(pessoa.idade,pessoa.vdd);
+escreva ("josias",n);
+fimalgoritmo
+
+//testando traducao de laços de repetição
+var:
+inteiro: idade<-0;
+inicio
+enquanto(idade<=10)faca
+	idade<-idade+1;
+fimenquanto;
+idade<-0;
+repita
+	idade<-idade+1;
+ate(idade<=10);
+idade<-0;
+para idade de 1 ate 10 passo 1 faca
+	idade<-idade+1;
+fimpara;
+idade<-0;
+para idade de 1 ate 10  faca
+	idade<-idade+1;
+fimpara;
+fimalgoritmo
+
+//testando traduçao do ecolha
+var:
+inteiro: idade;
+inicio
+escolha idade
+	caso 2 : idade <- idade+1;
+	caso contrario : escreva(idade) ;
+fimescolha;
+fimalgoritmo
+
+//testando traducao comando se
+var:
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+inicio
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13;
+se(7.0>pessoa.salario)entao
+pessoa.cpf<-13;
+fimse;
+se(7.0>pessoa.salario)entao
+	inicio
+	pessoa.cpf<-13;
+	fim ;
+senao
+	inicio
+	pessoa.cpf<-13;
+	fim;
+fimse;
+se(7.0>pessoa.salario)entao
+	pessoa.cpf<-13;
+senao
+	pessoa.cpf<-13;
+fimse;
+escreva ("josias",n);
+fimalgoritmo
+
+//sem erros
+var:
+inteiro:m<-2;
+inteiro:n[1..7],k,y;
+logico:vd<-falso,v<-verdadeiro;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+inicio
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13;
+modulo Calcular (inteiro: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<-15;
+	retorne idae<-idae+op.idade;  
+fimmodulo; 
+Calcular(pessoa.cpf,pessoa.vdd);
+Calcular(pessoa.idade,pessoa.vdd);
+escreva ("josias",n);
+fimalgoritmo
+
+//incluir var: no inicio
+var:
+inteiro:m<-2.9;
+inteiro:n[1..7],k,y;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+inicio
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13.9;
+modulo Calcular (inteiro: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<-15.9;
+	retorne idae<-idae+op+op.salario;  
+fimmodulo; 
+Calcular(pessoa.cpf,pessoa.vdd);
+Calcular(pessoa.salario,pessoa.hjk);
+escreva ("josias",n);
+fimalgoritmo
+
+//ta com erro
+inicio
+modulo Calcular (inteiro: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<-15.9;
+	retorne idae<-idae+op+op.salario;  
+fimmodulo; 
+Calcular(pessoa.cpf,pessoa.vdd);
+Calcular(pessoa.salario,pessoa.hjk);
+escreva ("josias",n);
+fimalgoritmo
+
+//argumentos sendo campo de registros
+inicio
+inteiro:n[1..7],k,y;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13.9;
+modulo Calcular (inteiro: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<-15.9;
+	retorne idae<-idae+op+op.salario;  
+fimmodulo; 
+Calcular(pessoa.cpf,pessoa.vdd);
+Calcular(pessoa.salario,pessoa.hjk);
+escreva ("josias",n);
+fimalgoritmo
+
+//variaveis recebendo valores de registros
+inicio
+inteiro:n[1..7],k,y;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+fimregistro;
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13.9;
+modulo Calcular (inteiro: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<-15.9;
+	retorne idae<-idae+op+op.salario;  
+fimmodulo; 
+Calcular(07,falso);
+escreva ("josias",n);
+fimalgoritmo
+
+//atribuição à registros
+inicio
+inteiro:n[1..7],k,y;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:vdd;
+fimregistro;
+Pessoa:pessoa;
+pessoa.cpf-12.9;
+pessoa.cpf<-13.9+09;
+modulo Calcular (real: idae, logico: idade) 
+	Pessoa:op;
+	op.cpf-14.9;
+	op.cpf<-15.9+90;
+	retorne op.cpf<-17.9;
+fimmodulo; 
+Calcular(0.7,falso);
+escreva ("josias",n);
+fimalgoritmo
+
+////erros relacionais registros
+inicio
+real:i;
+tipo Pessoa = registro
+	inteiro: idade, cpf;
+	real: salario;
+	caractere:nome;
+	logico:verd;
+fimregistro;
+Pessoa:s,u;
+se(7.0>u.cpf)entao
+i<-10;
+fimse;
+fimalgoritmo
+
+//erros relacionais registros
+inicio
+real:i;
+tipo Pessoa = registro
+	inteiro: idade, cpf;
+	real: salario;
+	caractere:nome;
+	logico:verd;
+fimregistro;
+Pessoa:s,u;
+se(u.verd>u.cpf)entao
+i<-10;
+fimse;
+fimalgoritmo
+
+//operadores relacionais
+inicio
+real:i;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+fimregistro;
+Pessoa:s,u;
+se(i>u)entao
+i<-10;
+fimse;
+fimalgoritmo
+
+//corrigir
+inicio
+inteiro:n[1..7],k,y;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+fimregistro;
+Pessoa:pessoa;
+pessoa.idade-12.9;
+pessoa.cpf<-13.9;
+modulo Calcular (real: idae, logico: idade) 
+	Pessoa:op;
+	op.idade-14.9;
+	op.cpf<-15.9;
+	retorne idae<-idae+op;  
+fimmodulo; 
+Calcular(0.7,falso);
+escreva ("josias",n);
+fimalgoritmo
+
+//sem erros
+inicio
+inteiro:n[1..7],k,y;
+tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+fimregistro;
+modulo Calcular (real: idae, logico: idade) 
+	real:op;
+	retorne idae<-idae+op;  
+fimmodulo; 
+Calcular(0.7,falso);
+escreva ("josias",n);
+fimalgoritmo
+
+//erro Lexico, sintático e semântico
+inicio
+int:i;
+inteiro:0n[1..7],k,y;
+tipo Pessoa  registro
+		inteiro: idade, cpf,cpf;
+		rel: salario;
+		caractere:nome;
+fimregistro;
+modulo Calcular (real: idae, logico: idade) 
+	real:op;
+	retorne idae<-idae+op;  
+fimmodulo; 
+Calcular(34);
+escreva ("josias",n);
+fimalgoritmo
+
+//parâmetro e variaveis locais
+inicio
+inteiro:n[1..7],k,y;
+int:i;
+tipo Pessoa = registro
+		inteiro: idade, cpf,cpf;
+		rel: salario;
+		caractere:nome;
+fimregistro;
+modulo Calcular (real: idae, logico: idade) 
+	real:op;
+	retorne idae<-idae+op;  
+fimmodulo; 
+Calcular(34);
+escreva ("josias",n);
+fimalgoritmo
+
+//condição
+inicio
+real:s,i;
+logico:u;
+se(s>u e "ola">u)entao
+u<-10.9;
+fimse;
+fimalgoritmo
+
+//condição
+inicio
+real:s,K;
+inteiro:i;
+se(K>47 e i>47.9)entao
+s<-10.9;
+fimse;
+fimalgoritmo
+
+//erros lexicos
+inicio
+!
+@
+#
+$
+%
+¨
+&
+´jh
+`d
+^h
+~l
+ç
+fimalgoritmo
+
+//erros corregidos
+inicio
+inteiro:n[7],k,y;
+int:i;
+tipo Pessoa = registro
+		inteiro: idade, cpf,cpf;
+		rel: salario;
+		caractere:nome;
+fimregistro;
+modulo Calcular (Pesoa: idae, logico: idade) 
+	tg:op;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcular(34);
+escreva ("josias",n);
+fimalgoritmo
+	
+//tipo errado
+inicio
+  caractere:s1,s2;
+  logico:s3;
+  retorne 1.0+s1+12+s2-13-s3;
+fimalgoritmo
+
+//atribuicao composta sem atribuicao explicita
+inicio
+  retorne 10+s1+12+s2-13-s3;
+fimalgoritmo
+
+//atribuicaocomposta
+inicio
+s <- 10+12-13;
+s<-5;
+fimalgoritmo
+
+//variaveis já declaradas
+inicio
+inteiro:n[7],k,y,y,y;
+modulo Calcular (inteiro: idade, logico: idade) 
+	inteiro:n,k,k,n;
+	tipo Pessoa = registro
+		inteiro: idade, cpf,cpf;
+		real: salario;
+		caractere:nome;
+	fimregistro;
+	Pessoa:pessoa;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcular(34);
+escreva ("josias",n);
+fimalgoritmo
+
+//atribuição simplesRegistro valor errado
+inicio
+tipo Pessoa = registro
+	inteiro: idade, cpf;
+	real: salario;
+	caractere:nome[50];
+	logico:passou;
+fimregistro;
+Pessoa:pessoa;
+Pessoa:pessoas[2];
+pessoa.passou<-"J";
+pessoa.nome[0]<-falso;
+pessoas[1].passou<-"J";
+pessoa[1].nome[0]<-falso;
+fimalgoritmo
+
+//atribuição simplesVariavel valor errado
+inicio
+logico:passar;
+passar<-"Josias G";
+caractere:nomes;
+nomes<-falso;
+fimalgoritmo
+
+//tipos estão errados;
+inicio
+inteiro:dia<-90.9;
+real:total<-dia;
+logico:passar<-total;
+caractere:nomes<-passar;
+inteiro:idade<-nomes;
+fimalgoritmo
+
+//argumento não é um vetor
+inicio
+real:total;
+inteiro:idade;
+caractere:nomes;
+logico:passar;
+modulo Calcular (real:salario[], inteiro: dia[], caractere:nome[], logico:passou[]) 
+	inteiro:n,k;
+	tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+		logico:passou;
+	fimregistro;
+	Pessoa:pessoa;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcular(67.9,56,"Josias G",falso);
+escreva ("josias",n);
+fimalgoritmo
+
+//argumento sendo o valor
+inicio
+inteiro:n[7],k,y,y,y;
+modulo Calcular (inteiro: idade, logico: dia) 
+	inteiro:n,k;
+	tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+	fimregistro;
+	Pessoa:pessoa;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcular(34,falso);
+escreva ("josias",n);
+fimalgoritmo
+
+//quantidade de argumentos errada
+inicio
+real:total;
+inteiro:idade;
+caractere:nomes;
+logico:passar;
+modulo Calcular (real:salario, inteiro: dia, caractere:nome, logico:passou) 
+	inteiro:n,k;
+	tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+	fimregistro;
+	Pessoa:pessoa;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcular();
+escreva ("josias",n);
+fimalgoritmo
+
+//variavel não é um vetor
+inicio
+real:total[2];
+inteiro:idade;
+caractere:nomes;
+logico:passar;
+modulo Calcular (real:salario, inteiro: dia[], caractere:nome, logico:passou) 
+	inteiro:n,k;
+	tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+	fimregistro;
+	Pessoa:pessoa;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcular(total,idade,nomes,passar);
+escreva ("josias",n);
+fimalgoritmo
+
+//variavel ainda não foi declarada
+inicio
+modulo Calcular (real:salario, inteiro: dia, caractere:nome, logico:passou) 
+	inteiro:n,k;
+	tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+	fimregistro;
+	Pessoa:pessoa;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcular(total,idade,nomes,passar);
+real:total;
+inteiro:idade;
+caractere:nomes;
+logico:passar;
+escreva ("josias",n);
+fimalgoritmo
+
+inicio
+real:salario<-3;
+inteiro: n<-salario;
+fimalgoritmo
+
+inicio
+inteiro:n[7],k,y,y,y;
+tipo Pessoa = registro
+	inteiro: idade, cpf;
+	real: salario;
+	caractere:nome;
+fimregistro;
+fimalgoritmo
+
+inicio
+inteiro:n[7],k,y,y,y;
+modulo Calcular (inteiro: idade, inteiro: dia) 
+	inteiro:n,k;
+	tipo Pessoa = registro
+		inteiro: idade, cpf;
+		real: salario;
+		caractere:nome;
+	fimregistro;
+	Pessoa:pessoa;
+	retorne (idade+dia);  
+fimmodulo; 
+Calcula(34);
+escreva ("josias",n);
+fimalgoritmo
+
+inicio
+idade[1].idade <- 10;
+idade.idade <- 10;
+fimalgoritmo
+
+inicio
+inteiro:idade;
+real:salario,salarios[10];
+caractere:nome,nomes[14];
+logico:teste;
+escolha idade caso var :  9+9; fimescolha;
+modulo Calcular (inteiro: ano, inteiro: mes, inteiro: dia) inteiro:sexo,m;real:soma; retorne (idade+dia);  fimmodulo; Calcula(34);
+inteiro:dia;
+fimalgoritmo
+
+inicio
+escolha idade caso var :  9+9; fimescolha;
+modulo Calcular (inteiro: ano, inteiro: mes, inteiro: dia[]) inteiro:sexo,m;real:soma; retorne (idade+dia);  fimmodulo; Calcula(34);
+inteiro:dia;
+fimalgoritmo
+
+inicio
+inteiro:idade;
+idade<-10;
+leia(no[2],mj,mm[9]);
+escreva("Ola",idade,"ola",no[2],mj,mm[9]);
+escreva(idade);
+fimalgoritmo
+
+inicio
+inteiro:idade;
+idade<-10;
+escreva(idade);
+fimalgoritmo
+
+inicio
+fimalgoritmo
+
+inicio
+se (e > 3)entao
+inicio
+s <- 10;
+fim;
+senao
+s<-5;
+fimse;
+fimalgoritmo
+
+inicio
+se (e>3)entao
+inicio
+s <- 10+div(w+2+arq());
+fim;
+senao
+s<-5+mod(w+3+arq());
+fimse;
+fimalgoritmo
+
+
+inicio "josias Gomes LimA " fimalgoritmo
+
+inicio idade<- 10; fimalgoritmo
+
+inicio inteiro:n; escreva ("josias",n); fimalgoritmo
+
+inicio inteiro: n; escolha idade caso var : 9+9; fimescolha; fimalgoritmo
+
+inicio inteiro: n; escolha idade caso var : id 9+9*3; fimescolha; fimalgoritmo //erro
+
+inicio
+inteiro:idade;
+escolha salario caso var: 9+0; fimescolha;
+fimalgoritmo
+
+inicio
+inteiro: numero, numero2,soma;
+soma<-numero+numero2;
+escreva(soma);
+fimalgoritmo
+
+inicio
+inteiro: numero, numero2,resultado;
+resultado<-numero+numero2;
+escreva(resultado);
+resultado<-numero*numero2;
+escreva(resultado);
+resultado<-numero/numero2+1.8;
+escreva(resultado);
+resultado<-numero*numero2(numero-numero2);
+escreva(resultado);
+fimalgoritmo
+
+inicio modulo Calcular (inteiro: idade, inteiro: dia) retorne (idade+dia);  fimmodulo; Calcula(34); fimalgoritmo
+
+inicio
+inteiro:idade;
+idade<-10;
+escreva(idade);
+escolha salario caso var: 9+0;
+fimalgoritmo
+
+ui { jkl
+jfd
+dsf
+df
+}
+qwe
+sd
+
+e3
+tr5
+%ty
+uy$
+fr#
+husios32 huj sss
+ssdj088
+ji8
+
+
+ate
+caractere
+de
+div
+e
+enquanto
+entao
+escreva
+escolha
+faca
+fim
+fimenquanto
+fimescolha
+fimpara
+fimregistro
+fimse
+inicio
+inteiro
+leia
+mod
+modulo
+nao
+ou
+para
+passo
+programa
+real
+registro
+repita
+se
+senao
+tipo
+vetor
+retorne
+
+
+:
+;
+/
+*
++
+>
+<
+>=
+<=
+=
+<>
+(
+)
+“
+\
+{
+}
+[
+]
+..
+,
+-
+<-
+
+
+0,9
+9.3
+909998
+faso
+falso
+verdaieor
+verdadeiro
+
+
+"\\7\\a\\b\\n\\r"
+" "
+""
+"ola"
+"azAZ09"
+"z"
+"A"
+"Z"
+"0"
+"9"
+"\7"
+"\a"
+"\b"
+"\n"
+"\r"
+"\t"
+"\v"
+"\"
+"’"
+"”"
+"?"
+"%"
+"*"
+"\*"
+"*\"
+
+var 
+idade : inteiro ;
+inicio
+idade <- 10 ;
+escreva ( idade ) ;
+fimalgoritmo
+
+var 
+idade:inteiro;
+inicio
+idade<-10;
+escreva(idade);
+fimalgoritmo
+
+
+fj dvfv ffv
+ 
+ 
+d 
+fv
+ h
+
+ 
+
+j
+
+fccffff
+
+ d
+  df
+   fd
+vfd 
+ghgh  
+ghghgh   
+ 
+  
+   
+	
+		
+			
+
+			
+{\\7\\a\\b\\n\\r}
+{ }
+{}
+{ola}
+{azAZ09}
+{z}
+{A}
+{Z}
+{0}
+{9}
+{\7}
+{\a}
+{\b}
+{\n}
+{\r}
+{\t}
+{\v}
+{\}
+{’}
+{”}
+{?}
+{%}
+{*}
+{\*}
+{*\}
+{
+}
+{kl
+}
+{
+kih}
+{{{{
+}}}}
+{}
+{
+}
+
+" ola mundo
+{ deixa 
+quieto
+ }
+" consegui "
+sadf
+
+
+inteiro : X ;
+	caractere : Nome , Endereco , Data ;
+	real : Salario ;
+cont <- 10 ;
+	A <- A / B ;
+	A <- A mod B ;
+	A <- A div B ;
+	A <- A * B ;
+	A <- A + B ;
+	A <- A - B ;
+( 5 > 5 )
+	( 4 < 5 )
+	( 5 >= 5 )	
+	( 5 <= 5 )	
+( 5 = 5 )
+( 5 <> 6 )
+nao ( 5 > 7 ) 
+( 5 < 7 ) ou ( 5 > 7 ) 
+( 5 <= 7 ) e ( 5 = 7 ) 
+leia ( salario ) ;
+escreva ( salario ) ;
+	escreva ( "Valor do salário: " , salario ) ;
+se ( condicao ) entao
+	 	 COMANDO ;      {comando único {ação primitiva}
+fimse ;
+
+se ( condicao ) entao
+       	      inicio  {inicio do bloco verdade}
+            	 COMANDO1 ;
+            	 COMANDO2 ; {sequencia de comandos}
+            	 .
+           		 .
+		  COMANDOn ;
+         	     fim ; {fim do bloco verdade}
+     	senao
+		COMANDO ; {ação primitiva}
+fimse ;
+escolha x
+	caso v1 : COMANDO1 ;
+	caso v2 , v3 : COMANDO2 ;
+	caso v4 : COMANDO3 ;
+	caso v5 : COMANDO4 ;
+	caso contrario : COMANDO5 ;
+fimescolha ;
+enquanto < condicao > faca
+	COMANDO1 ;
+	COMANDO2 ;
+	.
+	.
+	.
+	COMANDOn ;
+fimenquanto ;
+repita
+	COMANDO1 ;
+COMANDO2 ;
+.
+.
+.
+COMANDOn ;
+ate < condicao > ;
+para V de vi ate vf passo p faca
+	COMANDO1 ;
+	COMANDO2 ;
+	.
+	.	
+	.
+	COMANDOn ;
+fimpara ;
+tipo TURMA = vetor [ 1 .. 20 ] de real ; { definição do tipo do vetor}
+	TURMA : VTURMA ; {declaracao da variável vetor}
+tipo regPessoa = registro
+				inteiro : CPF ;
+				caractere : Nome ;
+				caractere : Nascimento ;
+				inteiro : Idade ;
+				real : Salario ;
+				logico : Aposentado ;
+		fimregistro ;
+modulo Sinal ( inteiro : X )
+	     se X > 0
+		entao retorne ( 1 ) ;
+		senao se x = 0
+				entao retorne ( 0 ) ;
+				senao retorne ( - 1 ) ;
+			fimse ;
+	      fimse ;
+	fimmodulo ;
